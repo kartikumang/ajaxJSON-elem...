@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <form action="#" >
+      <input id="username" type="text" placeholder="username" name="username">
+      <input  type="password" placeholder="password" name="password">
+      <input type="submit" value="Make Account">
+    </form>
+
+    <script>
+         var username = document.querySelector('#username');
+         username.addEventListener('input',function(){
+              if(username.value.length > 0 ){
+                axios.get(`/checkusername/${username.value}`)
+              .then(function(sta){
+                  if(sta.data === "") username.style.outlineColor = "initial" ;
+                  else username.style.outlineColor = "red" 
+              });
+              }
+         });
+    </script>
+</body>
+</html>
